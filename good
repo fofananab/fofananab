@@ -1,0 +1,23 @@
+Tapez une équation ici.CREATE TABLE clients(
+customer_id integer primary key,
+nom varchar(255) not null,
+adresse varchar(225) not null
+);
+
+
+CREATE TABLE produits(
+product_id integer primary key,
+nom varchar(225),
+prix DECIMAL,
+age int check(age)
+);
+
+CREATE TABBLE commandes
+order_id  integer primary key,
+customer_sid integer references customer(sid),
+product_sid integer references product(sid),
+quantité integer
+date_commande DATE
+
+
+
