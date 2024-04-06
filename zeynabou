@@ -1,0 +1,22 @@
+Enregistrement 1 : (nom= "Cookies", prix= 10)
+Enregistrement 2 : (nom= "Candy", prix= 5,2)
+
+INSERT INTO `produits`(` product_id`, `nom`, `prix`)
+values('1', `cookies`,`10`);
+values(`2`, `candy`, `5,2`);
+tableau des clients
+Enregistrement 1 : (nom= "Ahmed", adresse= "Tunisie")
+Enregistrement 2 : (nom= "Coulibaly", adresse= "Sénégal")
+Enregistrement 3 : (nom= "Hasan", adresse= "Egypte")
+INSERT INTO `clients` ( `customer_id`, `nom` , `adresse`)
+values (`1`,`Ahmed`,`tunisie`);
+values (`2`, `coulibaly`, `sénégal`);
+values(`3`,`Hasan`,`Egypte`);
+
+tableau des commandes
+Enregistrement 1 : (costumerid= 1, productid= 2, quantité= 3, order_date= '2023-01-22')
+Enregistrement 2 : (costumerid= 2, productid= 1, quantité= 10, order_date= '2023-04-14')
+
+INSRT INTO `commande`(order_id ,customer_id,product_id, quantité, order_date)
+values('1','1`,`2`,`3`,`2023-01-22`);
+values(`2`,`1`,`10` `2023-04-14`);
