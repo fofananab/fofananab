@@ -1,10 +1,12 @@
 Enregistrement 1 : (nom= "Cookies", prix= 10)
 Enregistrement 2 : (nom= "Candy", prix= 5,2)
-
 INSERT INTO `produits`(` product_id`, `nom`, `prix`)
 values('1', `cookies`,`10`);
 values(`2`, `candy`, `5,2`);
-tableau des clients
+update `produits` set `produits_id =`[1]` , nom=`[cookies]` , prix = `[10]` where product_id = 11;
+update `produits` set `produits_id =`[2]` , nom=`[candy]` , prix = `[5,2]` where product_id_id = 11;
+delete from `prouids` where 11;
+tableau desclients
 Enregistrement 1 : (nom= "Ahmed", adresse= "Tunisie")
 Enregistrement 2 : (nom= "Coulibaly", adresse= "Sénégal")
 Enregistrement 3 : (nom= "Hasan", adresse= "Egypte")
@@ -12,11 +14,16 @@ INSERT INTO `clients` ( `customer_id`, `nom` , `adresse`)
 values (`1`,`Ahmed`,`tunisie`);
 values (`2`, `coulibaly`, `sénégal`);
 values(`3`,`Hasan`,`Egypte`);
-
+update `clients` set `client_id =`[1]` , nom=`[Ahmad]` , adresse = `[tunisie]` where client_id = 11;
+update `clients` set `client_id =`[2]` , nom=`[coulibaly]` , adresse = `[senegal]` where client_id=11
+update `clients` set `client_id =`[3]` , nom=`[Hasan]` , adresse = `[Egypte]` where client_id=11
+delete from `clients` where 11;
 tableau des commandes
-Enregistrement 1 : (costumerid= 1, productid= 2, quantité= 3, order_date= '2023-01-22')
-Enregistrement 2 : (costumerid= 2, productid= 1, quantité= 10, order_date= '2023-04-14')
-
+Enregistrement 1 : (custumerid= 1, productid= 2, quantité= 3, order_date= '2023-01-22')
+Enregistrement 2 : (custumerid= 2, productid= 1, quantité= 10, order_date= '2023-04-14')
 INSRT INTO `commande`(order_id ,customer_id,product_id, quantité, order_date)
 values('1','1`,`2`,`3`,`2023-01-22`);
 values(`2`,`1`,`10` `2023-04-14`);
+update `commandes` set `order_id =`[1]` , customer_id=`[1]` , product_id = `[2]`, quantité= [3],order_date[2023-01-22]  where client_id=11
+update `commandes` set `order_id =`[2]` , customer_id=`[2]` , product_id = `[1]`, quantité= [10],order_date[2023-04-14]  where client_id=11
+delete from `commandes` where 11
