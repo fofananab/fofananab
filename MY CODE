@@ -1,0 +1,87 @@
+customer(customer_id , customer_name,customer_tel)
+product(product_id , product_name, category,price)
+orders(#customer_id #product_id, orderDate , quantity, total_amount)
+
+1) create database  binome
+   create table customer(
+ 
+customer_id INT PRIMARY KEY , nom varchar(225) not null, tel int);
+create table produits
+product_id INT PRIMARY KEY , name varchar(225) not null , category int , price decimal);
+
+create table orders(
+customer_id int reference customer(id), product_id int reference produits(id) ,
+orderdate date, quantity int , total_amount decimal);
+
+2) inserer
+insert into `customer`( customer_id, nom , tel) values ( 1 , 'turbogizmo' , 10.99);
+insert into produits ( customer_id  ,,nom  ,category ,price) values (1 , 'nom' , category , price);
+insert into orders (customer_id , product_id ,orderDate , quatity , total_amount) values ( customer_id , product_id ,orderDate , quantity ,total_amount);
+3)SELECT customer.Nom  AS customer_widgad ,
+       SUM(CASE WHEN produits.category= 'Widget' THEN orders.quantity * produits.price ELSE 0 END) AS cout_total_widgets ,
+       SUM(CASE WHEN produits.category = 'Gadget' THEN orders.quantity * produits.price ELSE 0 END) AS cout_total_gadgets
+FROM customer
+JOIN orders ON customer.customer_id = orders.customer_id
+JOIN produits  ON orders.product_id = produits.product_id
+WHERE produits.category IN ('Widget', 'Gadget')
+GROUP BY customer.customer_id, customer.nom
+HAVING COUNT(DISTINCT CASE WHEN produits.category = 'Widget' THEN orders.product_id END) >= 1
+   AND COUNT(DISTINCT CASE WHEN produits.category = 'Gadget' THEN orders.product_id END) >= 1;
+4)SELECT customer.nom AS clients_wid,
+       SUM(orders.quantity * produits.price) AS cout_total_widgets
+FROM customer
+JOIN orders ON customer.customer_id = orders.customer_id
+JOIN produits  ON orders.product_id = produits.product_id
+WHERE produits.category >= 'Widget'
+GROUP BY customer.customer_id, customer.nom
+LIMIT 1 ;
+5)SELECT customer.nom AS clients_wid,
+       SUM(orders.quantity * produits.price) AS cout_total_widgets
+FROM customer
+JOIN orders ON customer.customer_id = orders.customer_id
+JOIN produits  ON orders.product_id = produits.product_id
+WHERE produits.category >= 'gadget'
+GROUP BY customer.customer_id, customer.nom
+LIMIT 1 ;
+6))SELECT customer.nom AS clients_wid,
+       SUM(orders.quantity * produits.price) AS cout_total_widgets
+FROM customer
+JOIN orders ON customer.customer_id = orders.customer_id
+JOIN produits  ON orders.product_id = produits.product_id
+WHERE produits.category >= 'Doohickey'
+GROEUP BY customer.customer_id, customer.nom
+LIMIT 1 ;
+7)SELECT produits.category AS nombre_total,
+       SUM(orders.quantity * produits.price) AS cout_total
+FROM orders
+JOIN produits  ON orders.product_id = produits.product_id
+WHERE produits.category IN('widget','gadget')
+GROUP BY produits.product_id, produits.category
+LIMIT 1;
+8)SELECT produits.name AS produits_AM,
+count(orders.quantity) AS total_quantity
+from produits
+join orders ON produits.product_id= orders.product_id
+GROUP BY produits.product_id,produits.name;
+9) SELECT produits.name AS produits_AM,
+SUM(orders.quantity) AS total_quantity
+from produits
+join orders ON produits.product_id= orders.product_id
+GROUP BY produits.product_id,produits.name
+ORDER BY SUM(order.quantity) DESC;
+
+10) SELECT customer.nom AS zone , count(*)AS total_total
+from customer
+join order ON customer.customer_id=orders.customer_id
+GROUP BY customer.customer.customer_id , customer.customer_id
+ORDER BY count(*) DESC 
+LIMIT 1;
+11)SELECT customer.Nom , COUNT(*) as orders_total
+FROM customer
+join orders ON customer.customer_id=orders.customer_id
+WHERE orders.order_DATE=7
+GROUP BY customer.customer_id , customer.Nom;
+
+
+
+
