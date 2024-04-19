@@ -1,0 +1,97 @@
+1) wine(wine_id,category,wine_year,Degree)
+producer(producer_id, firstName , LastName , region)
+harvest(#wine_id , #producer_id ,quantity)
+create table wine(
+wine_id int primary key not null,
+category varchar(50) not null,
+wine_year int  not null,
+degree decimal(2) 
+);
+
+2 )create table producer(
+producer_id int primary key not null,
+firstName varchar(50),
+lastName varchar(50),
+region varchar(50)
+);
+create table harvest (
+quantity decimal ,
+wine_id int refence wine (id),
+producer_id int reference wine (id)
+);
+3)
+insert into `wine`( `wine_id` , `category` , `wine_year`, `degree`)
+values ( 1 , 'vin_blanc' , 1998 , 12);
+insert into `producer`( `producer_id` , `firstName` , `LastName`, `region`)
+values(  2 ,ABOU ,sall , sousse
+insert into `harvest`( `wine_id` , `producer_id` , `quantity`)
+values ( 2 , 4,12)
+4)
+SELECT producer.producer_id
+FROM producer
+GROUP BY producer.producer_id;
+5)
+SELECT producer.producer_id
+FROM producer
+GROUP BY producer.producer_id
+ORDER by producer.FIRSTNAME;
+
+6)
+SELECT producer.producer_id , producer.REGION
+FROM producer
+WHERE producer.REGION ='sousse'
+GROUP BY producer.producer_id , producer.REGION 
+LIMIT 1
+  
+7)
+SELECT SUM( harvest.quantity) AS quantity_total
+FROM harvest
+WHERE harvest.producer =12
+GROUP BY harvest.producer ;
+
+8)
+SELECT SUM( harvest.quantity) AS quantity_total 
+FROM harvest
+JOIN wine ON harvest.quantity=harvest.wine_id
+WHERE wine.category
+GROUP BY harvest.wine_id;
+
+
+9)
+SELECT producer.producer_id , producer.FIRSTNAME , producer.LASTNAME
+FROM producer
+JOIN harvest ON producer.producer_id= harvest.producer
+JOIN producer U ON harvest.producer=harvest.wine_id
+WHERE producer.REGION = 'sousse'
+GROUP BY producer.producer_id
+HAVING COUNT(harvest.wine_id)>=	1 
+ORDER BY producer.FIRSTNAME , producer.LASTNAME DESC ;
+
+
+
+
+10)
+SELECT wine.wine_id AS NUMERO_DE_VIN
+FROM wine
+JOIN producer ON producer.producer_id=producer.producer_id
+WHERE wine.degree>12 AND producer.producer_id=24
+GROUP BY wine.wine_id,wine.degree
+LIMIT 1;SELECT producer.producer_id
+FROM producer
+GROUP BY producer.producer_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
